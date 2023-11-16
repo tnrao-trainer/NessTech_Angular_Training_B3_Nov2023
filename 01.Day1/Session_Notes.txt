@@ -1,0 +1,294 @@
+New Project 	Updates in Angular16/17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Installation  Angular CLI:
+	---  latest  17.0.0
+	>		npm  i  -g  @angular/cli			
+	>		npm  i  -g  @angular/cli@16.0.0
+	
+	
+	
+Project Creation: 
+		default project type standalone component
+			>		ng new my-project
+			
+		create a project without standalone (ngmodule)
+			>	  ng new my-project2  --standalone=false
+	
+---------------------------------------------------------------------------------------------------------
+
+
+Web Technologies History  (Angular Version)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	1995   -   2005			----				10%  (Client Side) 		---	90%(Server Side)	
+    2005							----				AJAX (Partial Page updates with server data)
+	2007							----				3rd Party libraries
+															jQuery, YUI, Dojo, etc... 
+	2009/2012					----				Angular JS   (JavaScript based)	
+	....
+	2016							-----				Angular2	(TypeScript, components,... ... )
+	....	
+	2023							-----				Angular17															
+------------------------------------------------------------------------------------------	
+	
+Components
+~~~~~~~~~~~
+-->  User-defined tag
+-->  Reusable 
+-->  Component:
+
+			a.   application logic  
+								---   app.component.ts
+								---   login.component.ts
+								...
+			b.    presentation logic
+								---	app.component.html
+								---	login.component.html
+		
+			c.    styles	
+								---	app.component.css
+								---	login.component.css
+								
+			d.    unit test file 
+								---	app.component.spec.ts	
+								---	login.component.spec.ts	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Custom Pipes in Angular
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Pipes in Angular
+~~~~~~~~~~~~~~~
+
+	[ *.ts  ]	
+	email:string =  "tNrao.trainEr@gmail.com";
+	
+	
+	[*.html]	
+	{{email }}						---				tNrao.trainEr@gmail.com
+	{{email | lowercase}}	---				tnrao.trainer@gmail.com
+	
+
+Pre-defined Pipes:		lowercase, uppercase, slice, date, json, currency, etc...
+
+
+	
+Decorators:  
+		
+@Component()	----	component classes 
+@Pipe()			---    pipe class should be mark with  @Pipe()
+@Injectable()		---   Service classes 
+@NgModule()	----		Modules classes 
+
+	
+	
+CLI Command to generate pipe:
+
+		ng  g  p  gender
+		ng  g  p  grade
+		....
+		
+		
+		grade.pipe.ts
+		grade.pipe.spec.ts	
+		
+		
+	
+@Pipe(
+{
+	 name  :  "gender"
+})	
+export class  GenderPipe  implements  PipeTransform
+{
+		transform()
+		{
+				//  to logic to transform your data 
+		}		
+}
+	
+   
+Apply in template:		
+		{{user.gender | gender}}
+		
+-----------------------------------------------------------------------------------
+
+
+Example-1
+~~~~~~~~~
+
+Requirement :		Create a  GenderPipe 
+
+m /  f
+M / F
+
+m  	--->		Male 
+f  		--->   	Female 
+
+
+{{ user.gender }}		---		m
+{{ user.gender | gender }}		---		Male
+
+
+input type	:			string, number, boolean, any, string[],  any[],  Emp[],..... 
+output type	:		string, number, boolean, any, string[],  any[],  Emp[],..... 
+------------------------------------------------------------------------------------------------
+
+
+empsArray	---		100 emp objects
+
+
+	<tr  *ngFor="let item of empsArray | slice :0:10">
+		................
+	</tr>
+
+
+
+
+
+
+Further Reference:
+	1.  JavaScript  Array Methods
+	2.  JavaScript  String Methods
+	3.  JavaScript  Math Methods
+	4.  JavaScript  Date Methods
+
+
+
+
+
+
+
+
+trasnform()
+
+			
+
+
+
+
+
+
+
+
+
+Scalar			----	single value
+Collection 	----	Array of Objects
+
+
+
+
+
+
+input items :		Employee[],  depno	
+output :				Employee[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Requirement 
+		filter the employee data based on the deptno 
+	
+	input :  	   any []   /  employee[] 
+	output :     any[]  /   employee[]  
+
+
+
+JavaScript Libs.
+	1.   Array Methods
+	2.   String Methods
+	3.   Date   Methods
+	4.   Math  Methods
+	
+	    input.filter()
+
+
+
+
+
+	filter, find, findIndex
+	
+	
+	find(callback)		---		single item 
+	findIndex(callback)	----	index
+	filter(callback)		---		collection items 
+
+
+    input.find ( item => item.deptno == 10 );
+    input.findIndex  ( item => item.deptno == 10 );
+    input.filter( item => item.deptno == 10 );
+
+
+   output  = input.filter( item => item.deptno == 10);
+
+(or0)
+	
+	for(let i = 0; i < input.length; i++)
+	{		
+		if(input[i].deptno == 10)
+		{
+			output.push(input[i]);
+		}
+	}
+	
+	
+	
+Pipe with extra parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	*ngFor="let item of empsArray | slice :  0:5  "		--  pre-defeind 
+	*ngFor="let item of empsArray | filter  : 10 "
+
+----------------------------------------------------------------------------
+	 transform(input:any[],  dno:number): any[] {
+		 
+		 
+	 }
+	
+	
+	
+	
+	Dname 					Deptno
+	-------------------------------------
+	Accounts	---		10
+	Sales			---		20
+	Marketing	---		30
+	Finance 		---		40
+	
+	---------------------------------------------------------
+	
+ 
+	
+ 
