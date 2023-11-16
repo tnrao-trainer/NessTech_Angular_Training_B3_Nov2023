@@ -1,0 +1,21 @@
+1.  Create a custom pipe for employee grades. ( Refer the image )
+
+2.  Update the Employees component to implement the same functionality using Buttons for each department.  (Refer the image)
+
+3.   Create Angular component to process users data using slice pipe. 
+	Loading the items based on the user interaction.
+
+		a.  Display users details in cards format. 
+		b.  By default only four records should display.		
+		c.  Add a button "Load More" that will keep on increase number of records.
+		
+				4		-->		8	-->	 12 --->  16  .................
+				
+		d.  Once it reach to end, make the button  invisible. 	
+		
+4.    Update the filter pipe to dynamically passing prop and value so that we can filter the data based on given property and value.
+	
+	Sample Usage:
+
+	  *ngFor="let item of empsArray |  filter : 'deptno' : '10'
+	  *ngFor="let item of empsArray |  filter : 'job' : 'Manager'
