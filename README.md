@@ -1,4 +1,4 @@
-# NessTect_Angular_Training_B3_Nov2023
+# NessTech_Angular_Training_B3_Nov2023
 
 Hi Team, 
 
