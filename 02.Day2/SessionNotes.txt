@@ -1,0 +1,200 @@
+Component Communication in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ 
+
+
+ Why do we need communication between components?
+ 
+ 
+	<br />		---  break tag 
+	<hr />
+	
+	<app-login></app-login>
+	
+	<img  src="Image1.jpg"  />
+	<img  src="Images/Image1.jpg"  />
+	<img  src="http://www.facebook.com/photos/Hello.jpg" />
+	
+	<app-emps></app-emps>
+	
+	<app-emps  job="Manager"></app-emps>
+	<app-dept-details   deptno="10"></app-dept-details>	
+	<app-product-list   category="Mobiles"></app-product-list>
+	
+	
+	
+	
+ app.component.html 
+ ~~~~~~~~~~~~~~~~~~
+		<app-emps></app-emps>
+				
+						
+app component ---    parent
+emps component  ---  child 
+ 
+ 
+ How to develop/add attributes to angular components?
+ 
+		-->   By using @Input()
+		-->   Allows data can send from parent to child component 
+		
+		
+	
+@Pipe()
+@Component()
+
+ 
+ @Input()
+ ~~~~~~~~
+ 
+ import {Input}  from '@angular/core';
+ 
+  
+	@Input()   uname:string  = "";
+	
+ 
+ 
+ 
+ Example-1
+ ~~~~~~~~~
+  Parent :			app component
+ 
+						-->  send the user name to greeting component
+						
+						<app-greeting   uname="Scott">
+						<app-greeting    [uname]="user1">
+ 
+ 
+ Child :			greeting component
+ 
+						--> get uname from app component
+						--> display welcome message 
+ 
+ 
+						@Input()   uname:string  = "";
+						
+						
+						
+						
+						
+						
+						
+						
+						
+Applying *ngFor on component selectors:
+
+
+		<tr *ngFor="">
+		<p *ngFor="">
+		<div *ngFor="">
+		<img *ngFor="">
+		
+		
+		<app-greeting   *ngFor="let item of  unamesArray"  
+									[uname]="item">
+		</app-greeting>
+						
+-----------------------------------------------------------------------------
+Example-2
+~~~~~~~~~~
+
+Parent :    app-dept-list
+
+					-->  holds the all dept data as array of dept objects
+					-->  send each dept data to child component
+					
+							<app-dept-details  [deptObj]="d1">
+							
+							
+					-->    parent should provide event handler to output property of child
+					-->    parent should get data from child --- through event args ($event)
+					
+							<app-dept-details  (onDeptRemove)="deptRemove_parent($event)">
+
+
+Child :		 app-dept-details				 
+
+					-->  Get the dept data from the parent
+					-->  Display the dept details on the screen using template
+					
+					@Input()    deptObj:Dept = new Dept();
+					
+					
+					Remove Click()					
+							--> notify the parent about remove task -- by trigger event
+							--> send deptno to parent 
+							
+						
+						
+------------------------------------------------------------------------------------------------------------------						
+		
+
+		@Input()		---			add attributes to angular component
+		@Output()		---			add event attributes to angular component
+		
+		
+			
+			<button  id="b1"  onclick="getData()"> Get Data </button>
+						
+						
+	
+@Output  decorator
+~~~~~~~~~~~~~~~~~
+Child Configuration
+	import {  Output,  EventEmitter }  from '@angular/core';
+		
+	@Output()   onDeptRemove:EventEmitter<number>  = new EventEmitter();
+
+	//  child notify the parent about remove task -- by trigger event
+	this.onDeptRemove.emit(this.deptObj.deptno);					
+-----------------------------------------------------------------------------
+Parent Configuration:	
+
+		<app-dept-details  (onDeptRemove)="deptRemove_parent($event)">
+		
+		deptRemove_parent(dno:number)
+		{
+			// code to remove selected dept based on dno
+		}
+		
+----------------------------------------------------------------------------------------------------------------------
+
+
+Example-3
+~~~~~~~~~~
+
+	1.  Parent --   AppComponent
+	
+							-->   Parent send location name to dept-list component						
+							
+							<app-dept-list  loc="Hyd"> 
+						 
+	
+	2.  Child  ---    Dept-List Component 
+	
+							-->  Get location name  as input parameter from parent
+							-->  Filter the depts based on the location and display as result 
+							
+							--> ngOnChanges() --  executes when the input properties are updated. 
+							
+-----------------------------------------------------------------------------------------
+
+Try this example
+~~~~~~~~~~~~~~~
+
+	<my-data-grid   [source]="empsArray">
+	<my-data-grid   [source]="deptsArray">
+	<my-data-grid   [source]="productsArray">
+
+
+------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
