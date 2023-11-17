@@ -1,0 +1,14 @@
+<h3 align="center">Siblings Component Communication in Angular</h3>
+<hr/>
+
+<div style="background-color: lightgreen; padding: 10px; border:2px solid gray;">
+    <app-filter-options  (onJobChanged)="updateJob($event)">
+    </app-filter-options>
+</div>
+
+<hr/>
+
+<div style="background-color: lightyellow; padding: 10px; border:2px solid gray;">
+    <app-emps  [job]="selectedJob"></app-emps>
+</div>
+
