@@ -1,0 +1,17 @@
+1. Create Product List component that accepts category as input parameter. 
+	Display the list of products based on the selected category. 
+
+	  a . app.component.html
+			 
+					<product-list   [category]="selectedCategory"></product-list>	
+		
+		b.    product list will display all the product details in cards format (same as dept example).   
+		
+		c.    Display categories  as hyperlinks in parent component. 
+		
+		d.    Display the product details based on the selected job hyerplink. 
+		
+
+ 2.  Update the previous example by making all category hyperlinks as separate component. Implement siblings communication. 
+ 
+ 
