@@ -1,0 +1,38 @@
+Task
+~~~~~
+
+
+1.  Create an angular component that implements the following requirements:
+		a. Provide display modes options: List and Grid.  
+		b.  Display the employee based on the selected mode
+		c.  Also add an option that filters the data based on the selected dept 		 
+		
+		Note:  Please check the reference image that is included. It is just a sample output. You can customize the design as per your creativity. 
+		
+2.  Create attribute custom directive to apply shadow for the given element. 
+
+	<p    appMyShadow> Text </p>	
+	<p    [appMyShadow]=" 'Blue' "> Text </p>
+	<p    [appMyShadow]=" 'Green' "> Text </p>
+		
+	
+3.  Create structural directive that allow only admin users.  
+Show if the given user name is in admins list. Otherwise hide the content. 
+
+	Allowed Admin users:   Scott, Smith, Robert, Mark		(Array of Strings)
+
+		<div   *adminPanel=" 'Scott' ">
+		...
+		</div>
+		
+		<div   *adminPanel=" 'Smith' ">
+		...
+		</div>
+		
+		<div   *adminPanel=" 'Sam' ">
+		...
+		</div>
+		
+		Hint: For "Sam" user we need to hide. 
+	
+	

@@ -1,0 +1,88 @@
+<style>
+    .bg1 {
+        background-color: lightblue;
+    }
+
+    .bg2 {
+        background-color: lightgreen;
+    }
+
+    .bg3 {
+        background-color: pink;
+    }
+
+    .c1 {
+        color: deeppink;
+        border: 1px solid deeppink;
+        width: 100px;
+        margin: 5px;
+        float: left;
+        text-align: center;
+        background-color: white;
+    }
+
+    .c2 {
+        background-color: deeppink;
+        color: white;
+        margin: 0px;
+    }
+</style>
+
+<h3> Working with Directives in Angular </h3>
+<hr />
+
+
+Select Display Mode :
+<select [(ngModel)]="displayMode">
+    <option>List</option>
+    <option>Table</option>
+    <option>Card</option>
+    <option>Others</option>
+</select>
+<hr />
+
+
+<section [ngSwitch]="displayMode">
+
+    <article *ngSwitchCase=" 'List' ">
+        <ul>
+            <li *ngFor="let item of studentsArray">
+                Mr./Mrs.
+                <span style="color:blue; font-weight: bold;">{{item.sname}}</span>
+                joined in
+                <span
+                    [ngStyle]="{ 'color': (item.course == 'Angular'?'red':'green'), 'font-style': 'italic'}">{{item.course}}</span>
+                course.
+            </li>
+        </ul>
+    </article>
+
+    <article *ngSwitchCase=" 'Table' ">
+        <table border="2" cellspacing="0" cellpadding="5" width="500">
+            <tr class="bg1">
+                <th>S.No</th>
+                <th>Student Name</th>
+                <th>Course Name</th>
+            </tr>
+
+            <tr *ngFor="let item of studentsArray; let i = index;  let x = odd; let y = even;"
+                [ngClass]="{bg2 : x,  bg3:y}">
+                <td>{{i + 1}}</td>
+                <td>{{item.sname}}</td>
+                <td>{{item.course}}</td>
+            </tr>
+        </table>
+    </article>
+
+    <article *ngSwitchCase=" 'Card' ">
+        <div class="c1" *ngFor="let item of studentsArray">
+            <p class="c2">{{item.sname}}</p>
+            <span>{{item.course}}</span>
+            <br />
+        </div>
+    </article>
+
+    <article *ngSwitchDefault>
+        This is the default mode
+    </article>
+</section>

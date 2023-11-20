@@ -1,0 +1,28 @@
+<h3>Developing Custom Attribute Directives in Angular</h3>
+<hr/>
+
+
+
+<div *appIsAdmin="true"  style="background-color:lightpink; border:1px solid gray; padding:10px; margin: 10px;">
+    <h1>Restricted Section-1 </h1>
+    <h3>This is admin panel which contains options that admin can access </h3>
+    <h3>This is admin panel which contains options that admin can access </h3>
+    <h3>This is admin panel which contains options that admin can access </h3>
+    <h3>This is admin panel which contains options that admin can access </h3>
+</div>
+
+<input type="button" (click)="flag = !flag;"  value="Show/Hide" />
+<br/>
+
+<div *appIsAdmin="flag" style="background-color:lightblue;  border:1px solid gray; padding : 10px; margin:10px;">
+    <h1>Restricted Section-2 </h1>
+    <h3>This is admin panel which contains options that admin can access </h3>
+    <h3>This is admin panel which contains options that admin can access </h3>
+    <h3>This is admin panel which contains options that admin can access </h3>
+    </div>
+
+
+
+
+
+ 
