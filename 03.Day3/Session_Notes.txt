@@ -1,0 +1,175 @@
+Directives in Angular
+~~~~~~~~~~~~~~~~~
+
+--> 	Any user defined tags/attributes --  consider as directives. 
+
+-->  Component  Tags:		
+					<app-emp-list></app-emp-list>	
+					<app-greeting></app-greeting>
+					<app-root></app-root>
+					....
+	    
+		Angular Attributes:					
+					<input  [(ngModel)]="uid" />
+					<div   [ngClass]="...">
+					
+					<div *ngIf="bool"></div>
+					<tr  *ngFor=""></tr>				
+				
+			
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Component Based development 
+	
+			a.   Application Logic 	----		*.component.ts
+						---		typescript language
+						
+			b.   Presentation Logic  ----	*.component.html
+						---		html, css,  angular directives
+
+			<tr  *ngFor="let item of  deptsArray">
+				....
+			</tr>
+			
+			<div  *ngIf="filteredArray.length == 0">
+				.....
+			</div>
+			
+			<input  [(ngModel)]="uname"  />
+ 
+ 
+ 
+ 
+ Different Types of Directives:
+ 
+ 	1.   Component Directives	:		app-emps, app-login, app-depts
+	2.   Attribute Directives	:			ngModel, ngStyle, ngClass, 
+	3.   Structural Directives		:		*ngIf, *ngFor, 
+	
+	
+			<tr  *ngFor="let item of  deptsArray">			 
+			<div  *ngIf="filteredArray.length == 0">
+	
+
+Switch control structure in javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+switch(expression)
+{
+		case  value  :    statements;   break;
+		case  value  :    statements;   break;
+		case  value  :    statements;   break;
+		....
+		default 	:			statements;   break;
+}	
+
+
+
+<section>
+		<article></article>
+		<article></article>
+		<article></article>
+</section>
+
+
+Example-1
+~~~~~~~~~
+
+	-->  	Provide the following options to end-user so that end-user will select display mode
+				Eg:		List,  Grid,  Cards,.....
+				
+	-->   Based on the selected display mode, we need to present the students details. 
+	
+		
+
+
+ngStyle
+~~~~~~~
+
+			 <span style="color:blue;">{{item.sname}}</span>
+			 
+			<span [ngStyle]=" { 'color': (item.course == 'Angular' ? 'Red' : 'Green'), 'font-style': 'italic'}">{{item.course}}</span>
+
+
+
+		 [ngStyle]= " { 'color':'red', 'font-style': 'italic'}"		 
+		 [ngStyle]= " { 'color': (item.course == 'Angular' ? 'Red' : 'Green'), 'font-style': 'italic'}"
+
+
+ngClass
+~~~~~~~~
+
+ <tr *ngFor="let item of studentsArray; let i = index; let isEven = even; let isOdd = odd"
+        [ngClass]="{'bg2':isEven, 'bg3':isOdd}">
+		
+		
+			[ngClass]="{'bg2':true, 'bg3':false}"
+			
+			[ngClass]="{'bg2':isEven, 'bg3':isOdd}"
+			
+			[ngClass]="{'btn-primary':isEven, btn-success':isOdd}"
+			
+			
+			*ngFor="let item of studentsArray; let i = index; let isEven = even; let isOdd = odd"
+			
+				index  ---		number
+				even, odd  ----	boolean 
+				
+		
+<section [ngSwitch]="displayMode">
+    <article *ngSwitchCase=" 'List' "> You have selected List Mode </article>
+    <article *ngSwitchCase=" 'Table' "> You have selected Table Mode </article>
+    <article *ngSwitchCase=" 'Card' "> You have selected Cards Mode </article>
+    <article *ngSwitchDefault> This is default display Mode </article>
+</section>
+
+---------------------------------------------------------------------------------------------------
+
+
+Decorators in Angular
+~~~~~~~~~~~~~~~~~~~
+@Pipe()
+@Component()
+@Directive()
+@Injectable()
+@NgModule()
+@Input() and Output()	----		apply on properties 
+
+---------------------------------------------------------------------------------
+
+ng  g  d  name
+ng  g  d  name
+
+
+
+class  Hello
+{		 
+	constructor(private uname:string)
+	{
+		 
+	}	
+	
+	getData()
+	{
+			this.uname 
+	}	
+}
+
+
+
+
+
