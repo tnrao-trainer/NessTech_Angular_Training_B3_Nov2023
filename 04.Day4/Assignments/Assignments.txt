@@ -1,0 +1,21 @@
+1.  Create an Angular components to create vehicle Registration Form and Implement the following validations using Template Driven Forms
+	
+		1. Owner Name 		---     Required
+		2. Contact Number  ----	Required , should contain 10 digits
+		3. Owner Email   ---   Required, Email
+		4. Vehicle Registration Number   ----  Should be proper format ---   (Eg:  TS10AB1234)
+		5. Address  :     Required
+--------------------------------------------------------------------------------
+ 
+2.  Create an Angular components to create vehicle Registration Form and Implement the following validations using  Reactive Forms
+ 
+1. Owner Name 		---     Required
+2. Contact Number  ----	Required , should contain 10 digits
+3. Owner Email   ---   Required, Email
+4. Vehicle Registration Number   ----  Should be proper format ---   (Eg:  TS10AB1234)
+5. Address  :     Required
+6. Model  :   Max 10 characters
+7. Color :     Required 
+8. Year	:	2012 to 2022
+----------------------------------------------------------------------------------------------------------------------------
+ 
