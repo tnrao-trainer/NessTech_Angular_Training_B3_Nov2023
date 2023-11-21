@@ -1,0 +1,44 @@
+<style>
+	.error {   color : Red;  }
+</style>
+
+<h3> Angular Form Validations using Reactive Forms  </h3>
+<hr/>
+
+
+<form [formGroup]="customerForm" (ngSubmit)="submit_click()">
+
+    First Name  :   <input formControlName="fname"  />    
+    <span class="error" *ngIf="customerForm.controls['fname'].invalid && customerForm.controls['fname'].dirty">First Name is required</span>
+    <br/><br/>
+    Last Name  :   <input formControlName="lname"  />    
+    <span class="error" *ngIf="customerForm.controls['lname'].invalid && customerForm.controls['lname'].dirty">Last Name is required</span>
+    <br/><br/>
+
+    City Name  : <input formControlName="city"  />
+    <span  class="error"  *ngIf="customerForm.controls['city'].invalid && customerForm.controls['city'].dirty">
+    No. of characters should be in between 3 and 10
+    </span>
+  <br><br>
+
+  E-mail  :
+  <input  formControlName="email"  />
+  <span  class="error"  *ngIf="customerForm.controls['email'].invalid && customerForm.controls['email'].dirty">
+    Enter proper e-mail id
+  </span>
+  <br><br>
+
+  Pincode :
+  <input 	formControlName="pincode"  />
+    <span  class="error"  *ngIf="customerForm.controls['pincode'].invalid && customerForm.controls['pincode'].dirty">
+      Pincode should be six digits.
+    </span>
+  <br><br> 
+
+    <input type="submit"  [disabled]="customerForm.invalid" value="Register" />
+    
+</form>
+<br/>
+<div style="border:2px solid gray; padding : 10px;">
+    {{customerObj | json}}
+</div>

@@ -1,0 +1,55 @@
+<style>
+    .error {
+        color: Red;
+    }
+</style>
+
+<h3> Angular Form Validations using Template Driven </h3>
+<hr />
+
+
+<form #customerForm="ngForm" (ngSubmit)="submit_click()">
+    <fieldset>
+        <legend>Customer Registration Form</legend>
+        <label>First Name : </label>
+        <input type="text" [(ngModel)]="fname" #txtFname="ngModel" name="txtFname" required="true" />
+        <span class="error" *ngIf="txtFname.invalid && txtFname.dirty">First Name is required</span>
+        <br /><br />
+
+        <label>Last Name : </label>
+        <input type="text" [(ngModel)]="lname" #txtLname="ngModel" name="txtLname" required="true" />
+        <span class="error" *ngIf="txtLname.invalid && txtLname.dirty">Last Name is required</span>
+        <br /><br />
+
+        City Name  :
+        <input  type="text"  [(ngModel)]="city"
+                name="txtCity"  #txtCity="ngModel"
+                minlength="3"   maxlength="10"  />
+     
+            <span class="error"  *ngIf="txtCity.invalid && txtCity.dirty">
+                City name allows characters between 3 to 10
+            </span>
+        <br><br>
+
+        E-mail  :
+        <input  type="text"  [(ngModel)]="email"
+                name="txtEmail"  #txtEmail="ngModel"  email="true" />
+     
+        <span class="error"  *ngIf="txtEmail.invalid && txtEmail.dirty">
+        Enter valid email address
+        </span>
+        <br><br>
+
+        Pincode :
+        <input  type="text"  [(ngModel)]="pincode"
+        name="txtPincode"  #txtPincode="ngModel" pattern="\d{6}" />
+     
+        <span class="error"  *ngIf="txtPincode.invalid && txtPincode.dirty">
+            Pincode should allow six digits
+        </span>
+        <br><br>
+
+
+        <input type="submit" value="Register" [disabled]="customerForm.invalid" />
+    </fieldset>
+</form>
