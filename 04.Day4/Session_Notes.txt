@@ -1,0 +1,170 @@
+Working with Reactive Forms in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HTML
+~~~~~~
+1.   Output  Tags:	ul, ol, tabe, div, p, etc...
+2.   Input  Tags:		input, textarea, select, form
+
+
+Angular Apps
+~~~~~~~~~~~~
+--> Reading data from the users:
+		a.  Registration Page, Login, Payment, Order, Booking Tickets, etc... 
+		
+-->  [(ngModel)]  directive :
+		input fields   <----------		[(ngModel)]		-------------->		data model objects
+
+-->  	User may enter invalid data into input fields.
+
+
+
+Angular Forms:
+		a.   Reading valid data from the user
+		b.   data validations 
+		c.    Perform validations before the data submit to server 
+
+----------------------------------------------------------------	
+
+How to implement Angular Forms?
+	1.  Template Driven Forms
+	2.   Reactive Forms (Model Driven Forms)	
+------------------------------------------------------------------------------	
+
+1.  Template Driven Forms
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-->  Template :		ui logic 
+	   templateUrl :  "app.component.html"
+
+-->  Validation  implementation included in Template itself. 
+
+		a.  ngModel
+		b.  template variables
+		c.  form, input
+		d. *ngIf,  span 	--- error messages
+		e.  invalid, valid, dirty
+		
+
+-->	*.ts :		data model classes 
+
+
+What  is Template Variable?
+
+-->  Template Variable is special variable that we create in html elements under component template file. 
+
+-->  It refers current html dom element .
+
+	<p   #p1></p>
+	<input  #txtUname />
+	<form   #customerForm   />
+	
+	
+	var  paraObj = document.getElementById("id");
+	
+	
+	
+	<form   #customerForm  />		--  dom object  (default properties)
+	<form   #customerForm="ngForm"   />   
+						-- dom object with additional properties 
+	
+-->  due to assign ngForm value to template variable, angular will attach additional properties to the template variable. 
+	eg:  invalid, valid, 
+	
+	
+	Regular Expressions in JavaScript
+	Usage of Pattern attribute in HTML5 
+	
+	pattern="\d{6}"	
+	pattern="\d{10}"
+-----------------------------------------------------------------------------
+
+2. Reactive Forms
+~~~~~~~~~~~~~~~
+
+
+1.   ReactiveFormsModule 
+
+	// app.module.ts
+	import  {ReactiveFormsModule}  from  '@angular/forms';
+
+2.   *.component.ts
+		import {FormGroup,  FormControl,  Validators}   from  '@angular/forms';
+
+-->     
+
+		public  customerForm:FormGroup  = new FormGroup({
+				fname  :    new FormControl(null, Validators.required),
+				lname  :    new FormControl(),
+				.....
+		});
+
+
+3.  *.component.html
+
+
+		<form>
+			<input  />
+			....
+		</form>
+
+
+ <span *ngIf="customerForm.controls.fname.invalid">First Name is required</span>
+
+
+Accessing individual properties:
+
+	-->		customerForm.controls.fname.invalid		---	old version 
+	-->		customerForm.controls['fname'].invalid		---	new version
+	
+-----------------------------------------------------------------------------------------
+
+Example-3
+~~~~~~~~~
+1.  Apply bootstrap form styles to input fields
+2.  Handling individual error message for multiple validations on single control 
+
+		eg:	email 	----	required,  email
+		
+			<span  *ngIf="customerForm.controls['email'].invalid">Common for all errors</span>
+			
+			<span  *ngIf="customerForm.controls['email'].errors['required']">email is required</span>
+			<span *ngIf="customerForm.controls['email'].errors['email']">enter proper email format</span>
+
+3.   Involve checkboxes and drop-down list in reactive form validations
+4.   Add Custom Validation --- Functions 
+5.   Creating  FormGroup  by using FormBuilder 
+
+
+			 registerForm: FormGroup;
+
+			constructor(private formBuilder:FormBuilder)
+			{
+					registerForm  =   this.formBuilder.group(
+					{						
+						 title: ['', Validators.required],
+						 firstName: ['', Validators.required],
+						 lastName: ['', Validators.required],
+						 email: ['', [Validators.required, Validators.email]],
+						 .....
+					});				
+			}
+	
+	
+	  // convenience getter for easy access to form fields
+		get f() { return this.registerForm.controls; }
+		
+		
+		
+<div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+		  <div *ngIf="f['title'].errors['required']">Title is required</div>
+</div>
+		
+		
+		
+ <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+	  <div *ngIf="f['email'].errors['required']">Email is required</div>
+	  <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+</div>
+		
+		 
