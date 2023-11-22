@@ -1,0 +1,16 @@
+<h3>Employee Details Component</h3>
+
+
+Enter Emp Number : <input [(ngModel)]="empno"  />
+
+<button (click)="buttonClick()">Get Employee Data By Id</button>
+<br/><br/>
+
+
+<div  style="border:2px solid blue; padding: 5px;">
+    Employee Id  :  {{empObj.empno}}  <br/>
+    Employee Name  :  {{empObj.ename}}  <br/>
+    Employee Job  :  {{empObj.job}}  <br/>
+    Employee Salary  :  {{empObj.sal}}  <br/>
+    Employee Deptno  :  {{empObj.deptno}}  <br/>
+</div>
