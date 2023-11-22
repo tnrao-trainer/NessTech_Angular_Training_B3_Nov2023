@@ -1,0 +1,216 @@
+Dependency Injection and Services in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Dependency Injection
+~~~~~~~~~~~~~~~~~~
+--> Dependency Injection is a popular design pattern. 
+--> DI is design pattern in which a class requests the dependencies from external sources rather than creating them itself. 
+--> Angular DI framework provides dependencies to a class upon instantiation.
+	Use DI to increase flexibility and modularity  in your application. 
+	
+	
+	
+Services in Angular
+~~~~~~~~~~~~~~~~~~
+-->  A service is a reusable class across the application.
+-->  A services can be consumed by any of the programming type in angular.
+		Eg:   Component, Directive, Pipe, Service, etc...
+-->  Due to creation of service, component logic will clear, simple. 
+ 
+  class  AppComponent
+ {	 
+	 constructor(private dataService:DataService)
+	 {
+		 
+	 }	 
+ }
+--------------------------------------------------------------------------------
+
+How to develop & consume the services?
+
+Steps
+1. Create a service using angular CLI.
+
+		ng   g   s   hello
+		ng   g   s   logger
+		ng   g   s   data 		
+					data.service.ts
+					data.service.spec.ts
+
+2. Add the required logic in service class
+
+	@Injectable()
+	export   class    DataService
+	{
+			public  getData()
+			{
+				// add the required logic 
+			}
+			.......
+	}
+
+3. Provide the services using Providers 
+
+		@Injectable({
+				providedIn : 'root'
+		})
+
+4. Inject the service object in component
+
+	 constructor(private dataService:DataService)  {		 
+	 }	 
+
+5. Access the members of services to perform operation.
+
+  class  AppComponent
+ {	 
+	 constructor(private dataService:DataService)
+	 {
+		 
+	 }	 
+	 button_click()
+	 {
+		 this.dataService.getData();
+	 }
+ }
+---------------------------------------------------------------------------------
+
+
+
+
+
+DataService  :			
+		getAllEmployees()		--   returns all employee data 
+		getEmployeeById(id)		--   returns employee data based on the given id 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+App.module.ts	
+		@NgModule({
+			....
+			providers:  [HelloService]
+		})
+		
+
+[OR]
+		
+		@Injectable({
+				providedIn : 'root'
+		})
+
+
+@Injectable() decorator
+~~~~~~~~~~~~~~~~~~~~~
+-->  By default, the Angular CLI command  "ng generate service"  registers a provider with the root injector for your service by including provider metadata in the @Injectable() decorator. 
+
+@Injectable({
+		providedIn: 'root'
+})
+
+
+
+What is tree-shaking?
+
+Registering the provider in the @Injectable() metadata also allows Angular to optimize an app by removing the service from the compiled application if it isn't used, a process known as tree-shaking.
+
+--------------------------------------------------------------------------------------
+
+Nested Services
+~~~~~~~~~~~~~~~~
+
+--> One service can consume other services.
+
+	@Injectable()
+	export   class    DbService
+	{		
+		constructor(private logger:LogService,  private  httpClient:HttpClient) {  
+		}			
+		
+		public  getData()
+		{
+			this.logger.log("Message");
+			// add the required logic 
+		}
+			.......
+	}
+-----------------------------------------------------------------------------------------------------------
+ 
+Providing Services
+~~~~~~~~~~~~~~~
+
+1.   Root Level (Entire Application):	
+		a.  @NgModule()		----		app.module.ts
+		b.  @Injectable()		----		data.service.ts
+		
+			@Injectable({
+					providedIn  : 'root'
+				})
+		
+	-->  Scope:  Service instance is common for entire application. 
+
+2.   Sub-Module Level (Feature Module):	
+		
+			a.  @NgModule()		----		admin.module.ts
+			b.  @Injectable()		----		data.service.ts
+			
+				@Injectable({
+					providedIn  : 'AdminModule'
+				})
+				
+				
+		-->  Scope:  Service instance is available for admin module only. 
+
+ 3.   	Parent Component (Eg:  AppComponent)
+ 
+		@Component({
+			.....
+			providers : [DataService]
+		})
+		export class AppComponent
+		{
+			.....
+		}
+
+-->  Scope:  Service instance is available in AppComponent and all its child component.
+
+4.     Child Component (Eg:   Emp-Details.component.ts)
+
+
+		@Component({
+			.....
+			providers : [DataService]
+		})
+		export class EmpDetailsComponent
+		{
+			.....
+		}
+ 
+	-->  Scope:  Service instance is available only in  EmpDetailsComponent.
+
+----------------------------------------------------------------------------------------------------------
+
+How to use  useClass option in provider?
+
+-->  The useClass provider key lets you create and return a new instance of the specified class. You can use this type of provider to substitute an alternative implementation for a common or default class. 
+
+				{ provide :  DataService,   useClass :   EmpDbDataService  }
+				
+				
+Note:  You can configure, that when a constructor requests DataService Angular DI creates an instance of EmpDataService and passes it to the constructor.
+
+
+ 
+  
