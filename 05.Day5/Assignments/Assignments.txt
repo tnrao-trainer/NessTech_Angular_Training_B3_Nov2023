@@ -1,0 +1,10 @@
+1.  Add the following methods in the data services:
+			
+			a.   AddEmp(empObj:any)
+			b.   RemoveEmp(eno:number)
+
+2.  Modify the component (emp-list)  to perform add/remove operations by using above service. 
+
+3.  Create another service same as above service and check with useClass option in provider.
+
+ 
