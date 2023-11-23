@@ -1,0 +1,21 @@
+<h3>AJAX Calls using HttpClient in Angular</h3>
+<hr/>
+
+<input type="button" value="Get Customers" (click)="getData_click()"  />
+<br><br>
+
+
+
+<table border="2"   cellspacing="0">
+    <tr>
+      <th>Customer Name</th>
+      <th>City Name</th>
+      <th>Country Name</th>
+    </tr>
+  
+    <tr  *ngFor="let item of customersArray">
+      <td>{{item.Name}}</td>
+      <td>{{item.City}}</td>
+      <td>{{item.Country | uppercase}}</td>
+    </tr>  
+  </table>

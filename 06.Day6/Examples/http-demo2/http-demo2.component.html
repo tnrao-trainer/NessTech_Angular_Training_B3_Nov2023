@@ -1,0 +1,23 @@
+<h3>AJAX Calls to JSON Server using HttpClient in Angular</h3>
+<hr/>
+
+<input type="button" value="Get Depts" (click)="getData_click()"  />
+<br><br>
+
+
+<table border="2"   cellspacing="0">
+    <tr>
+      <th>Dept Number</th>
+      <th>Dept Name</th>
+      <th>Location</th>
+    </tr>
+  
+    <tr  *ngFor="let item of deptsArray">
+      <td>{{item.deptno}}</td>
+      <td>{{item.dname}}</td>
+      <td>{{item.loc}}</td>
+    </tr>  
+  </table>
+  <hr/>
+
+ 

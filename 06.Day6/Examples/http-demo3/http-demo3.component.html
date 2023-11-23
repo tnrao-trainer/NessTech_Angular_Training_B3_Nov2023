@@ -1,0 +1,35 @@
+<h3>Perform CRUD operations with JSON Serve using Angular Service </h3>
+<hr/>
+
+<input type="text"  [(ngModel)]="name"  placeholder="Student Name"  />
+<input type="text"  [(ngModel)]="city"  placeholder="City Name"  />
+<input type="text"  [(ngModel)]="email"  placeholder="E-mail Id"  />
+<input type="text"  [(ngModel)]="age"  placeholder="Age"  />
+<hr/>
+
+<input type="button" value="Get Depts" (click)="getData_click()"  />
+<input type="button"  value="Add Student" (click)="addData_click()"  />
+<input type="button"  value="Update Student" (click)="updateData_click()"  />
+<input type="button"  value="Clear Fields" (click)="clearFields()"  />
+<br><br>
+<table border="2"   cellspacing="0">
+	<tr>
+	  <th>Student Id</th>
+	  <th>Student Name</th>
+	  <th>City Name</th>
+	  <th>Student Email</th>
+	  <th>Student Age</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of studentsArray">
+        <td>{{item.studentId}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.city}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.age}}</td>
+        <td align="center">
+            <a href="javascript:void(0);" (click)="selectData_click(item.studentId)">Select</a> |
+            <a href="javascript:void(0);" (click)="deleteData_click(item.studentId)">Delete</a>
+        </td>
+    </tr>
+</table>

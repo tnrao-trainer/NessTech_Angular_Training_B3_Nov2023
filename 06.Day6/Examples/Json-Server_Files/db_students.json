@@ -1,0 +1,60 @@
+{
+  "students": [
+    {
+      "studentId": 1,
+      "name": "Smith",
+      "city": "Pune12",
+      "email": "smith@gmail.com",
+      "age": "28"
+    },
+    {
+      "studentId": 4,
+      "name": "Naveen",
+      "city": "Chennai",
+      "email": "naveen@gmail.com",
+      "age": "24"
+    },
+    {
+      "studentId": 5,
+      "name": "Srini",
+      "city": "Hyd",
+      "email": "srini@gmail.com",
+      "age": "22"
+    },
+    {
+      "name": "Ravi",
+      "city": "Hyd",
+      "email": "narasimha@gmail.com",
+      "age": "24",
+      "studentId": 11
+    },
+    {
+      "name": "Kiran Kumar",
+      "city": "Pune",
+      "email": "kiran@gmail.com",
+      "age": "26",
+      "studentId": 12
+    },
+    {
+      "studentId": 14,
+      "name": "Stephen",
+      "city": "Goa",
+      "email": "stephen@gmail.com",
+      "age": "35"
+    },
+    {
+      "studentId": 15,
+      "name": "Hanee",
+      "city": "Mumbai",
+      "email": "hanee@gmail.com",
+      "age": "24"
+    },
+    {
+      "studentId": 16,
+      "name": "Scott-1",
+      "city": "Mumbai-2",
+      "email": "scott1@gmail.com",
+      "age": "21"
+    }
+  ]
+}

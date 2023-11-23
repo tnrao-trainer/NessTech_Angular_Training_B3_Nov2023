@@ -1,0 +1,15 @@
+1.  Create an angular component to display users data.
+
+		a.  use this url to get data.  
+					https://reqres.in/api/users
+		b.  display the data in cards format (Refer the sample screen shot image)
+		
+
+
+2.  Create an angular component to perform CRUD operations.
+
+		a.  use json-server as back end
+		b.  prepare employee data. Properties :  empno, ename, job, sal, deptno
+		c.   create angular service to perform CRUD
+		d.   use angular service in component to implement all CRUD operations on Employee data
+		
