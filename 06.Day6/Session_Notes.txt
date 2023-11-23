@@ -1,0 +1,71 @@
+HTTP Client - Making server calls in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+-->  AJAX :  Asynchronous JavaScript And XML
+		--> Client side programming technique used to exchange the data between client and server. 	
+-->  XML   ---  data exchange 
+-->  JSON  --- Java Script Object Notation
+
+
+
+
+1.   AppModule	:		HttpClientModule 		----		@angular/common/http
+2.   Component :		    Inject the HttpClient  service class 
+
+
+
+
+
+HttpClient Service
+~~~~~~~~~~~~~~~~~
+
+this.httpClient.get(url).subscribe(callback);
+this.httpClient.get(url).subscribe((resData:any) =>
+{
+		// logic to process the response data 
+});
+
+
+
+
+
+
+
+Example-3
+~~~~~~~~~~
+1.  Perform CRUD Operations with JSON Server data
+2.  User defined services to perform CRUD operations  ---  DataService
+3.  Component will communicate with DataService 
+
+
+
+
+
+
+
+Note:  In old version,  
+		-->	HttpModule 		----		@angular/http
+	    -->	Http	Service class
+
+ -----------------------------------------------------------------------
+ 
+	let url  = "https://www.w3schools.com/angular/customers.php";
+	let observableObj$ =  this.httpClient.get(url);		// 	returns observable object
+	observableObj$.subscribe(callback);
+	(OR)
+	observableObj$.subscribe({
+		next :  callback,
+		error :  callback,
+		.....
+	});
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
