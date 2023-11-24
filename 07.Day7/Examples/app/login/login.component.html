@@ -1,0 +1,13 @@
+
+<fieldset>
+    <legend>User Login</legend>
+    
+    User Id  :  <input  [(ngModel)]="uid"   />  
+    <br/><br/>
+    Password :  <input type="password" [(ngModel)]="pwd"   />  
+    <br/><br/>
+    <input type="button"   value="Login" (click)="loginButton_click()" />  
+    
+    <p style="color:red;"> {{result}} </p>
+    
+    </fieldset>

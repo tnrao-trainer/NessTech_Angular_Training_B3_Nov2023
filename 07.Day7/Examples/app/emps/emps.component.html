@@ -1,0 +1,20 @@
+<h3>Employee Details</h3>
+
+<table border="2" cellspacing="0" cellpadding="5" width="450">
+  <tr>
+    <th>Empno</th>
+    <th>Ename</th>
+    <th>Salary</th>
+    <th>Job</th>
+    <th></th>
+ </tr>
+ <tr *ngFor="let item of emps">
+   <td>{{item.empno}}</td>
+   <td>{{item.ename}}</td>
+   <td>{{item.sal}}</td>
+   <td>{{item.job}}</td>
+   <td>
+    <a [routerLink]=" ['/Details',item.empno] ">Details</a> 
+   </td>
+ </tr>
+</table>
