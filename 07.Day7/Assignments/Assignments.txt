@@ -1,0 +1,5 @@
+1.  Try to implement the same routing and security concepts from the scratch in your angular project. 
+2.  Update the following items:
+
+		a.   Add "Logout" functionality in app module. 
+		b.   How to show/hide links for specific user? 
