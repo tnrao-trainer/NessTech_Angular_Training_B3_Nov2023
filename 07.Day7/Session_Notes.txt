@@ -1,0 +1,72 @@
+ Routing in Angular
+~~~~~~~~~~~~~~~~~
+
+	Link/Hyperlink 	----		url 	---->		component 
+	
+
+	Route 	---->				url,  component
+	
+					/					----		HomeComponent
+					/Emps		----		EmpComponent
+					/Dept			----		DeptsComponent
+					/Aboutus		---- AboutusComponent
+					
+					
+
+
+1.   How to implement routes and navigations?
+2.   How to handle invalid routes / 404 Error  / wrong urls? 
+		{  path :  "**",   component :  NotFoundComponent }
+3.  How to handle route parameters?				
+			/Details/1025
+			/Details/1026
+			
+			let eno  = this.activatedRoute.snapshot.params["id"];
+			
+4.   How to handle query parameters?						
+
+			/Home?uid=Scott&email=scott@gmail.com
+			/Emps?job=Manager&deptno=10
+			/Login?returnUrl=Emps
+
+		let str  = this.activatedRoute.snapshot.queryParams["uid"];
+		let str  = this.activatedRoute.snapshot.queryParams["job"];
+		let str  = this.activatedRoute.snapshot.queryParams["returnUrl"];
+		
+5.  How to apply security on routes?   Protecting routes from unauthorized users?
+
+6.  How to share data between views/components?  
+
+7.   How to redirect the user from one route to another using code?
+
+				constructor(private router:Router) {  }
+				
+				this.router.navigate( ['/Login'] );
+				this.router.navigate( ['/Emps'] );
+---------------------------------------------------------------------------------------------------
+
+
+1.  AuthGuard Service
+	a.  verify the token exists	
+					sessionStorage.getItem("AUTH_TOKEN");
+					
+	b.   if yes,  proceed with current route
+	c.    if not,  redirect the user to login route
+	
+	this.router.navigate(['/Login'], { queryParams : { returnUrl: state.url  } });
+
+2.   LoginComponent		
+	a. verify uid, pwd
+	b. if valid,    generate the token  and redirect the user 
+	
+			let str  = this.activatedRoute.snapshot.queryParams["returnUrl"];
+			this.router.navigate( [str] );
+	
+	c. if invalid,   display error message 
+	
+
+
+				
+			
+		
+ 
