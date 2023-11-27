@@ -1,0 +1,177 @@
+Unit Testing in Angular using Jasmine and Karma
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+>	ng  g   c  login	 
+	
+		login.component.ts
+		login.component.html
+		login.component.css
+		login.component.spec.ts	----	test specifications 
+
+
+
+What is Testing?
+
+-->A process of analyzing a software item to detect the differences between existing and required conditions (i.e., defects) and to evaluate the features of the software item.
+
+
+ 
+Automated Testing
+~~~~~~~~~~~~~~~~
+Automation Testing: Automation testing is the process of testing the software using an automation tool to find the defects. In this process, testers execute the test scripts and generate the test results automatically by using automation tools. Some of the famous automation testing tools for functional testing are QTP/UFT and Selenium.
+ ------------------------------------------------------------------------------------------------------------------------
+ 
+ 
+ What is TDD and BDD?
+ 
+ 
+--> Both of them are testing strategies for a software application. 
+--> The developer writes the test
+
+TDD  (Test-Driven Development)
+~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~
+--> Involves developer
+--> Involves writing a test for a certain piece of functionality (unit of code). 
+--> Running the test
+--> If it fail,  Update the code so that test will pass. 
+
+
+BDD  (Behavior-Driven Development)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--> Involves developer, test engineer, product manager
+--> Focus on the user's end point --- how your application behavior. 
+--> Developer need to write the tests, modifications. 
+
+ 
+ 
+ 
+ 
+ 
+ --------------------------------------------------------------------------------
+ Unit Testing
+~~~~~~~~~~~~
+ Unit Testing is done to check whether the individual modules of the source code are working properly. i.e. testing each and every unit of the application separately by the developer in the developer’s environment.   
+
+	
+	
+Concept of AAA 
+~~~~~~~~~~~~~~
+
+AAA----	Arrange, Act,  Assert
+
+
+	
+	
+Angular Testing Tools
+~~~~~~~~~~~~~~~~~~~~
+
+1. Jasmine
+	--> Jasmine is an open-source testing framework for JavaScript. 
+	--> It aims to run on any JavaScript-enabled platform, to not intrude on the application nor the IDE, and to have easy-to-read syntax. 
+	--> It is heavily influenced by other unit testing frameworks, such as ScrewUnit, JSSpec, JSpec, and RSpec
+	
+2. Karma
+
+	-->Karma is essentially a tool which spawns a web server that executes source code against test code for each of the browsers connected. 
+	--> Its automatically by letting Karma know which browsers to start when Karma is run.
+-------------------------------------------------------------------------------------------------	
+  
+  
+
+
+Writing Unit Test cases
+~~~~~~~~~~~~~~~~~~~~
+
+
+1. Method Name 	:	 describe()	 ------      create test suite	(collection of testcases)		
+			a. string   ---   test suite title
+			b. callback   ---   code to prepare all test sepcs
+					
+2. Method Name :		it()		----   create test case
+3. Parameters:
+		a. string		----		test case title
+		b. callback  -----		code to perform testing
+				AAA
+
+
+4.   Assert Step
+	  expect(app.title).toEqual('my-testing-project');
+	  
+5.  Matcher Functions	  :		toEqual
+
+
+
+
+.content span
+{
+	
+}
+ 
+---------------------------------------------------------------------
+
+Executing TestCases
+~~~~~~~~~~~~~~~~~~
+>  ng  serve  -o
+
+>	ng  test		
+	-- -runs all sepc files/test cases in entire application
+	
+>	ng  test    --include  "src/app/app.component.spec.ts"
+	
+	
+
+
+
+ 
+ 	
+Angular Testing 	Library
+~~~~~~~~~~~~~~~~~~~~~
+
+Libary :		@angular/core/testing
+
+
+TestBed Class
+~~~~~~~~~~~~
+-->	The TestBed configures and initializes environment for unit testing. 
+-->	The TestBed instantiates required component and services for testing.
+
+
+	TestBed.configureTestingModule({...}).compileComponents();
+	
+	const fixture = TestBed.createComponent(AppComponent);
+	
+	
+	--> In the above statement,   createComponent() method returns ComponentFixture class object.    It will be generated based on the given component.
+	
+ComponentFixture
+~~~~~~~~~~~~~~~	
+--> The ComponentFixture is the fixture for debugging and testing a component. 
+--> It is instantiated using TestBed.
+--> To create component object using ComponentFixture, it provides componentInstance property
+
+	const app = fixture.componentInstance;
+
+--> To access HTML element from HTML template, the ComponentFixture provides debugElement and nativeElement.
+--> In querySelector we can pass element id or element type. 
+--> In ComponentFixture,  debugElement and  the nativeElement to access html tags.
+
+	
+	
+1.  Should create the app ---  app component instance	
+	
+it('should create the app', () => {
+	// Arrange
+    const fixture = TestBed.createComponent(AppComponent);
+	
+	// Act
+    const app = fixture.componentInstance;
+	
+	// Assert
+    expect(app).toBeTruthy();
+ });
+----------------------------------------------------------------------------
+How to skip test and test suite?
+
+1.    xit()		----	skip only that test
+2.    xdescribe()  ---- skip the entire test suite
+----------------------------------------------------- 
