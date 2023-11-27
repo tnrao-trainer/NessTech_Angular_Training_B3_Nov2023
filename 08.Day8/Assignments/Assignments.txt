@@ -1,0 +1,9 @@
+Write the test cases for the following requirements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create a component to perform total amount calculation based on the given quantity and unit price.  
+		
+1. Check the default values of quantity --- should be 1
+2. Check the default result message -- should be empty
+3. Check the result message by calling "getTotalAmount()"  method
+4.  Check the result message by calling "getTotalAmount()"  method -- generate NaN for wrong values (other than numbers).
